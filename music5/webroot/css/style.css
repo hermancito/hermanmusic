@@ -1,0 +1,189 @@
+.portada{
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 10px;
+}
+.portada:hover{
+	opacity: 0.5;
+}
+.botonCarrito{
+	position: absolute;
+	bottom: 5px;
+}
+
+.botondisco{
+	position: absolute;
+	bottom: 25px;
+}
+
+.flash-msg{
+	position: absolute;
+	top: 70%;
+	right: 50%;
+	background: green;
+	z-index: 10000;
+	overflow: auto;
+}
+.remove{
+	color:black;
+	font-size: 1.3em;
+}
+.remove:hover{
+	color: black;
+}
+.tr{ text-align: right;}
+.total{
+	font-size: 20px;
+	font-weight: bold;
+}
+.identif{
+	width: 50%;
+	margin-top: 60px;
+	margin-left: 20%;
+}
+.itemsearch{
+	z-index: 1000;
+	background-color: #000;
+}
+.marcodiv{
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+	height: 400px;
+}
+.enlacenaranja{
+	color:#F24709;
+	font-weight: bold;
+}
+.enlacenaranja:hover{
+	margin-left: 5px;
+}
+.marcoestilo{
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+	height: 200px;
+	
+}
+.marcoestilo p{
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.marcodisco{
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+	height: 300px;
+	
+}
+.marcodisco p{
+	font-size: 10px;
+	font-weight: bold;
+}
+
+ul.pagination li a {
+  color: rgba(0, 0 ,0 , 0.54);
+}
+
+ul.pagination li.active a {
+  background-color: #DCE47E;
+  color: #FFF;
+  font-weight: bold;
+  cursor: default;
+}
+ul.pagination .disabled:hover a {
+  background: none;
+}
+
+.paginator {
+  text-align: center;
+}
+
+.paginator ul.pagination li {
+  float: none;
+  display: inline-block;
+}
+
+.paginator p {
+  text-align: right;
+  color: rgba(0, 0 ,0 , 0.54);
+}
+
+#playlist{
+	border-radius: 10px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 10px;
+	background:#333;
+	width:100%;
+	padding:20px;
+	margin-left: 0;
+}
+
+#audio{
+	border-radius: 10px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 10px;
+	background:#333;
+	width:100%;
+	padding-top:20px;
+	margin-left: 0;
+}
+
+#audio_app{
+	border-radius: 10px;
+	box-shadow: rgba(0,0,0,0.5) 2px 2px 10px;
+	width:100%;
+	padding-top:20px;
+	margin-left: 0;
+}
+
+.canciones{
+	list-style-type:none;
+}
+
+.canciones a{
+	color:#fff;
+	background:#333;
+	padding:5px;
+	display:block;
+}
+.canciones a:hover{
+	text-decoration:none;
+	color:olive;
+}
+
+.fixedfooter {
+  bottom: 0;
+  width: 100%;
+  background: #333333;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  margin-bottom: 0;
+  overflow: hidden;
+  left: 0;
+  color: #FFFFFF;
+}
+
+.fixedfooter ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.fixedfooter ul li {
+    float: left;
+}
+
+.fixedfooter ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.fixedfooter ul li a:hover {
+    background-color: #111;
+}
+
+.calltoaction{
+	width: 100%;
+	background-color: #333;
+}
