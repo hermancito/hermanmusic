@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use Cake\Collection\Collection;
 /**
  * Discos Controller
  *
@@ -100,5 +100,56 @@ class DiscosController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    
+
+    public function destacados()
+    {
+        $query = $this->Discos
+            ->find()
+            ->select(['id', 'name', 'banda', 'portada', 'portada_dir'])
+            ->where(['destacado' => 1])
+            ->order(['name' => 'DESC']);
+
+        // Convertimos a array para poder usar sample bien
+        $collection = new Collection($query->all());
+        $destacados = $collection->sample(5);
+
+        // Si es petición JSON (alternativa moderna)
+        if ($this->request->is('json')) {
+            $this->set([
+                'destacados' => $destacados,
+                '_serialize' => ['destacados']
+            ]);
+            return;
+        }
+
+        // Vista normal
+        $this->set(compact('destacados'));
+    }
+
+    public function ultimos()
+    {
+        $query = $this->Discos
+            ->find()
+            ->select(['id', 'name', 'banda', 'portada', 'portada_dir'])
+            ->where(['reciente' => 1])
+            ->order(['name' => 'DESC']);
+
+        // Ejecutar query
+        $ultimos = $query->all();
+
+        // Colección y sample
+        $collection = new Collection($ultimos);
+        $subjects = $collection->sample(6);
+
+        if ($this->request->is('requested')) {
+            return $this->response
+                ->withType('application/json')
+                ->withStringBody(json_encode($subjects));
+        }
+
+        $this->set(compact('subjects'));
     }
 }

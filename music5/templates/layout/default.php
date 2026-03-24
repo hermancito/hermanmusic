@@ -53,7 +53,7 @@ $cakeDescription = 'La música de Herman';
         
         <div class="large-4 columns">
             <h3>Discos destacados</h3>
-            <?php echo $this->element('destacados'); ?>
+            <?= $this->cell('Discos::destacados') ?>
         </div>
     </div>
 
@@ -62,11 +62,11 @@ $cakeDescription = 'La música de Herman';
     <div class="large-12 columns">
         <div class="large-6 columns">
             <h4>Últimas adquisiciones</h4>
-                <?php echo $this->element('ultimos'); ?>    
+                <?= $this->cell('Discos::ultimos') ?>    
         </div>
         <div class="large-6 columns">
             <h4>Vuestros comentarios</h4>
-                <?php echo $this->element('coments'); ?>
+                <?= $this->cell('Comentarios::coments') ?>
         </div>
     </div>
 </div>

@@ -48,5 +48,83 @@ class AppController extends Controller
          * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+        $this->loadComponent('Authentication.Authentication');
+    }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check
+        $this->Authentication->allowUnauthenticated(['home', 'index', 'view']);
+        $result = $this->Authentication->getResult();
+        if ($result && $result->isValid()) {
+            $this->set('current_user', $this->Authentication->getIdentity());
+        }
+    }
+
+    //HABRA QUE ADAPTARLO A AUTHENTICATION
+    /* public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        $this->Auth->allow(['index',
+                            'view',
+                            'display',
+                            'destacados',
+                            'ultimos',
+                            'coments',
+                            'tienda',
+                            'additem',
+                            'itemupdate',
+                            'remove',
+                            'quitar',
+                            'addisco',
+                            'carrito',
+                            'borraitem',
+                            'adcliente',
+                            'grabaCarrito',
+                            'indexcliente',
+                            'formapago',
+                            'muestracompra',
+                            'finalizacompra',
+                            'listas',
+                            'search',
+                            'searchjson',
+                            'confirmauser',
+                            'olvidopass',
+                            'cambiopass',
+                            'pagofinalizado',
+                            'pagofinalizadotienda',
+                            'avisacompra',
+                            'discosrest',
+                            'destacadosrest',
+                            'artistasrest',
+                            'viewrest',
+                            'discosxartista',
+                            'estilosrest',
+                            'artistasxestilo',
+                            'discosdestacados',
+                            'discosrecientes',
+                            'addrest',
+                            'addimagen',
+							'addphotorest',
+							'editrest',
+                            'loginrest',
+							'adduserrest'
+                            ]);
+        $this->Auth->config('authError', "Usted no está autorizado a acceder a este servicio");
+
+
+        $this->set('current_user', $this->Auth->user());
+    } */
+
+    public function isAuthorized($user)
+    {
+        // Administrador can access every action
+        if (isset($user['role']) && $user['role'] === 'Administrador') {
+            return true;
+        }
+
+        // Default deny
+        return false;
     }
 }
