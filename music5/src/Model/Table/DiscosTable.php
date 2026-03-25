@@ -45,6 +45,18 @@ class DiscosTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'portada' => [
+                'fields' => [
+                    // if these fields or their defaults exist
+                    // the values will be set.
+                    'dir' => 'photo_dir', // defaults to `dir`
+                    'size' => 'photo_size', // defaults to `size`
+                    'type' => 'photo_type', // defaults to `type`
+                ],
+            ],
+        ]);
+
         $this->hasMany('Songs', [
             'foreignKey' => 'disco_id',
         ]);
@@ -97,16 +109,10 @@ class DiscosTable extends Table
             ->notEmptyString('formato');
 
         $validator
-            ->scalar('portada')
-            ->maxLength('portada', 255)
-            ->requirePresence('portada', 'create')
-            ->notEmptyString('portada');
+            ->allowEmptyString('portada');
 
         $validator
-            ->scalar('portada_dir')
-            ->maxLength('portada_dir', 255)
-            ->requirePresence('portada_dir', 'create')
-            ->notEmptyString('portada_dir');
+            ->allowEmptyString('portada_dir');
 
         $validator
             ->boolean('vta')

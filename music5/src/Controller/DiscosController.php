@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 use Cake\Collection\Collection;
+use Cake\View\JsonView;
 /**
  * Discos Controller
  *
@@ -10,6 +11,10 @@ use Cake\Collection\Collection;
  */
 class DiscosController extends AppController
 {
+    public function viewClasses(): array
+    {
+        return [JsonView::class];
+    }
     /**
      * Index method
      *
@@ -21,6 +26,14 @@ class DiscosController extends AppController
         $discos = $this->paginate($query);
 
         $this->set(compact('discos'));
+    }
+
+    public function discosrest()
+    {
+        $discos = $this->Discos->find('all')->orderBy(['banda' => 'ASC']);
+
+        $this->set('discos', $discos);
+        $this->viewBuilder()->setOption('serialize', ['discos']);
     }
 
     /**
@@ -110,7 +123,7 @@ class DiscosController extends AppController
             ->find()
             ->select(['id', 'name', 'banda', 'portada', 'portada_dir'])
             ->where(['destacado' => 1])
-            ->order(['name' => 'DESC']);
+            ->orderBy(['name' => 'DESC']);
 
         // Convertimos a array para poder usar sample bien
         $collection = new Collection($query->all());
@@ -135,7 +148,7 @@ class DiscosController extends AppController
             ->find()
             ->select(['id', 'name', 'banda', 'portada', 'portada_dir'])
             ->where(['reciente' => 1])
-            ->order(['name' => 'DESC']);
+            ->orderBy(['name' => 'DESC']);
 
         // Ejecutar query
         $ultimos = $query->all();

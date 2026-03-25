@@ -1,6 +1,6 @@
 <?php
 $identity = $this->request->getAttribute('identity');
-$current_user = $identity ? $identity->toArray() : null;
+
 ?>
 
 <div class="fixed">
@@ -66,7 +66,7 @@ if ($current_user && $current_user['role'] === 'Usuario') {
 </li>
 
 <li>
-<?= $this->Html->image('carrito_blanco.png', [
+<?= $this->Html->image('carrito_blanco.PNG', [
     'alt' => 'Carrito',
     'url' => ['controller' => 'Discos', 'action' => 'carrito']
 ]) ?>
@@ -95,7 +95,7 @@ if ($current_user && $current_user['role'] === 'Usuario') {
 </div>
 
 <div class="small-3 columns">
-<?= $this->Form->button('Buscar', ['class'=>'small button tiny']) ?>
+<?= $this->Form->button('Buscar', ['class'=>'button']) ?>
 <?= $this->Form->end() ?>
 </div>
 </div>

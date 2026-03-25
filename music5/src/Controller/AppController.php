@@ -54,13 +54,55 @@ class AppController extends Controller
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
-        // for all controllers in our application, make index and view
-        // actions public, skipping the authentication check
-        $this->Authentication->allowUnauthenticated(['home', 'index', 'view']);
+        
         $result = $this->Authentication->getResult();
         if ($result && $result->isValid()) {
             $this->set('current_user', $this->Authentication->getIdentity());
         }
+        // for all controllers in our application, make this
+        // actions public, skipping the authentication check
+        $this->Authentication->allowUnauthenticated(['home', 'index', 'view', 'display',
+                            'destacados',
+                            'ultimos',
+                            'coments',
+                            'tienda',
+                            'additem',
+                            'itemupdate',
+                            'remove',
+                            'quitar',
+                            'addisco',
+                            'carrito',
+                            'borraitem',
+                            'adcliente',
+                            'grabaCarrito',
+                            'indexcliente',
+                            'formapago',
+                            'muestracompra',
+                            'finalizacompra',
+                            'listas',
+                            'search',
+                            'searchjson',
+                            'confirmauser',
+                            'olvidopass',
+                            'cambiopass',
+                            'pagofinalizado',
+                            'pagofinalizadotienda',
+                            'avisacompra',
+                            'discosrest',
+                            'destacadosrest',
+                            'artistasrest',
+                            'viewrest',
+                            'discosxartista',
+                            'estilosrest',
+                            'artistasxestilo',
+                            'discosdestacados',
+                            'discosrecientes',
+                            'addrest',
+                            'addimagen',
+							'addphotorest',
+							'editrest',
+                            'loginrest',
+							'adduserrest']);
     }
 
     //HABRA QUE ADAPTARLO A AUTHENTICATION

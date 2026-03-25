@@ -1,71 +1,111 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Disco> $discos
- */
+if(isset($current_user) && $current_user['role']=='Administrador'){
+    $this->layout = 'admin';
+}else{
+    $this->layout = 'default';
+}
 ?>
-<div class="discos index content">
-    <?= $this->Html->link(__('New Disco'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Discos') ?></h3>
-    <div class="table-responsive">
-        <table>
+<div class="large-12 columns">
+    <div class="large-6 columns">
+        <h3>Discos</h3>
+    </div>
+    <div class="large-6 columns">
+        <?php
+        if(isset($current_user) && $current_user['role']=='Administrador'){
+            echo $this->Html->link('Agregar disco', ['action'=>'add'], ['class' => 'button']);
+        }
+        ?>
+    </div>
+    <?php
+    if(!isset($current_user) || $current_user['role']=='Usuario'){
+        ?>
+        <div class="large-12 columns">
+            <?php foreach ($discos as $disco): ?>
+                <div class="large-4 columns">
+                    <div class="panel marcodisco">
+                        <?php
+                        if(!empty(h($disco->portada))){
+                            echo $this->Html->image('../files/discos/portada/' . h($disco['portada']), ['class'=>'portada'], ["alt" => $disco['name']]);
+                        }else{
+                            h($disco->portada);
+                        }
+                        ?>
+                        <br><br>
+                        <p><i><?= h($disco->name) ?></i></p>
+                        <p><?= h($disco->banda) ?></p>
+                        <p><?= h($disco->formato) ?></p>
+                        <?= $this->Html->link(__('Ver'), ['action' => 'view', $disco->id], ['class'=>'button tiny info botondisco']) ?>
+
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <div class="paginator">
+                <ul class="pagination">
+                    <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                    <?= $this->Paginator->numbers() ?>
+                    <?= $this->Paginator->next(__('next') . ' >') ?>
+                </ul>
+                <p><?= $this->Paginator->counter() ?></p>
+            </div>
+        </div>
+        <?php
+    }else{
+        ?>
+
+        <table class="responsive" id="myTable">
             <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('banda') ?></th>
-                    <th><?= $this->Paginator->sort('anyo') ?></th>
-                    <th><?= $this->Paginator->sort('copy') ?></th>
-                    <th><?= $this->Paginator->sort('formato') ?></th>
-                    <th><?= $this->Paginator->sort('portada') ?></th>
-                    <th><?= $this->Paginator->sort('portada_dir') ?></th>
-                    <th><?= $this->Paginator->sort('vta') ?></th>
-                    <th><?= $this->Paginator->sort('precio') ?></th>
-                    <th><?= $this->Paginator->sort('destacado') ?></th>
-                    <th><?= $this->Paginator->sort('reciente') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
+            <tr>
+                <th><?= $this->Paginator->sort('name', ['label'=>'Nombre']) ?></th>
+                <th><?= $this->Paginator->sort('banda') ?></th>
+                <th><?= $this->Paginator->sort('formato') ?></th>
+                <th><?= $this->Paginator->sort('portada') ?></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach ($discos as $disco): ?>
+            <?php foreach ($discos as $disco): ?>
                 <tr>
-                    <td><?= $this->Number->format($disco->id) ?></td>
                     <td><?= h($disco->name) ?></td>
                     <td><?= h($disco->banda) ?></td>
-                    <td><?= h($disco->anyo) ?></td>
-                    <td><?= h($disco->copy) ?></td>
                     <td><?= h($disco->formato) ?></td>
-                    <td><?= h($disco->portada) ?></td>
-                    <td><?= h($disco->portada_dir) ?></td>
-                    <td><?= h($disco->vta) ?></td>
-                    <td><?= $this->Number->format($disco->precio) ?></td>
-                    <td><?= h($disco->destacado) ?></td>
-                    <td><?= h($disco->reciente) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $disco->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $disco->id]) ?>
-                        <?= $this->Form->postLink(
-                            __('Delete'),
-                            ['action' => 'delete', $disco->id],
-                            [
-                                'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $disco->id),
-                            ]
-                        ) ?>
+                    <td><?= $this->Html->link(
+                                $this->Html->image('../files/Discos/portada/' . h($disco->portada), ['class'=>'portada', 'style'=>'width:50px; height:50px'],
+                                ["alt" => $disco->name]), ['controller'=>'discos', 'action' => 'view', $disco->id],
+                                ['escape' => false]
+                            );
+                        ?>
                     </td>
+                    <td>
+                        <?= $this->Html->link(__('Ver'), ['action' => 'view', $disco->id], ['class'=>'button tiny info']) ?>
+                    </td>
+                    <?php
+                    if(isset($current_user) && $current_user['role']=='Administrador'){
+                        ?>
+                        <td>
+                            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $disco->id], ['class'=>'button tiny warning']) ?>
+                        </td>
+                        <td>
+                            <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $disco->id], ['confirm' => __('Are you sure you want to delete # {0}?', $disco->id), 'class'=>'button tiny alert']) ?>
+                        </td>
+                        <?php
+                    }
+                    ?>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
+        <!--<div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?/*= $this->Paginator->prev('< ' . __('previous')) */?>
+            <?/*= $this->Paginator->numbers() */?>
+            <?/*= $this->Paginator->next(__('next') . ' >') */?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+        <p><?/*= $this->Paginator->counter() */?></p>
+    </div>-->
+        <?php
+    }
+    ?>
+
 </div>
