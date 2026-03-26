@@ -1,55 +1,67 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Artista> $artistas
- */
+<?php 
+if(isset($current_user) && $current_user['role']=='Administrador'){
+    $this->layout = 'admin';
+}else{
+    $this->layout = 'default';
+}
 ?>
-<div class="artistas index content">
-    <?= $this->Html->link(__('New Artista'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Artistas') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('paise_id') ?></th>
-                    <th><?= $this->Paginator->sort('estilo_id') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($artistas as $artista): ?>
-                <tr>
-                    <td><?= $this->Number->format($artista->id) ?></td>
-                    <td><?= h($artista->name) ?></td>
-                    <td><?= $artista->hasValue('paise') ? $this->Html->link($artista->paise->name, ['controller' => 'Paises', 'action' => 'view', $artista->paise->id]) : '' ?></td>
-                    <td><?= $artista->hasValue('estilo') ? $this->Html->link($artista->estilo->name, ['controller' => 'Estilos', 'action' => 'view', $artista->estilo->id]) : '' ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $artista->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $artista->id]) ?>
-                        <?= $this->Form->postLink(
-                            __('Delete'),
-                            ['action' => 'delete', $artista->id],
-                            [
-                                'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $artista->id),
-                            ]
-                        ) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+<div class="large-12 columns">
+    <div class="large-6 columns">
+        <h3>Artistas</h3>    
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+    <div class="large-6 columns">
+        <?php
+            if(isset($current_user) && $current_user['role']=='Administrador'){
+                echo $this->Html->link('Agregar artista', ['action'=>'add'], ['class' => 'button']);
+            }
+        ?>
     </div>
+    <table class="responsive" id="myTable">
+        <thead>
+            <tr>
+                <th><?= $this->Paginator->sort('name', ['label'=>'Nombre']) ?></th>
+                <th><?= $this->Paginator->sort('paise_id', ['label'=>'Procedencia']) ?></th>
+                <th><?= $this->Paginator->sort('estilo_id', ['label'=>'Estilo musical']) ?></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($artistas as $artista): ?>
+            <tr>
+                <td><?= h($artista->name) ?></td>
+                <td><?= h($artista->paise->name) ?></td>
+                <td><?= $artista->has('estilo') ? $this->Html->link($artista->estilo->name, ['controller' => 'Estilos', 'action' => 'view', $artista->estilo->id]) : '' ?></td>
+                <td>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $artista->id], ['class'=>'button tiny info']) ?>
+                </td>
+                <?php 
+                    if(isset($current_user) && $current_user['role']=='Administrador'){
+                ?>
+                <td>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $artista->id], ['class'=>'button tiny warning']) ?>
+                </td>
+                <td>
+                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $artista->id], ['confirm' => __('Are you sure you want to delete # {0}?', $artista->id), 'class'=>'button tiny alert']) ?>
+                </td>
+                <?php 
+                    }
+                ?>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php if(!isset($current_user) || (isset($current_user) && $current_user['role']!='Administrador')): ?>
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('next') . ' >') ?>
+            </ul>
+            <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        </div>
+    <?php endif; ?>
+
 </div>
+

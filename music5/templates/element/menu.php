@@ -31,7 +31,7 @@ $identity = $this->request->getAttribute('identity');
 
 <li><?= $this->Html->link('Conciertos', ['controller'=>'Pages','action'=>'display','conciertos']) ?></li>
 
-<?php if ($current_user): ?>
+<?php if (isset($current_user)): ?>
 <li class="has-dropdown">
     <a href="#">Listas de reproducción</a>
     <ul class="dropdown">
@@ -44,9 +44,9 @@ $identity = $this->request->getAttribute('identity');
 
 <li>
 <?php
-if ($current_user && $current_user['role'] === 'Administrador') {
+if (isset($current_user) && $current_user['role'] === 'Administrador') {
     echo $this->Html->link('CDs de varios', ['controller'=>'Cdvarios','action'=>'index']);
-} elseif ($current_user && $current_user['role'] === 'Usuario') {
+} elseif (isset($current_user) && $current_user['role'] === 'Usuario') {
     echo $this->Html->link('Tus CD de varios', ['controller'=>'Cdvarios','action'=>'indexuser', $current_user['id']]);
 }
 ?>
@@ -54,7 +54,7 @@ if ($current_user && $current_user['role'] === 'Administrador') {
 
 <li class="active">
 <?php
-if ($current_user && $current_user['role'] === 'Usuario') {
+if (isset($current_user) && $current_user['role'] === 'Usuario') {
     echo $this->Html->link(
         'Perfil ' . $current_user['name'],
         ['controller'=>'Users','action'=>'view', $current_user['id']]
@@ -73,7 +73,7 @@ if ($current_user && $current_user['role'] === 'Usuario') {
 </li>
 
 <li>
-<?php if ($current_user): ?>
+<?php if (isset($current_user)): ?>
     <?= $this->Html->link('SALIR', ['controller'=>'Users','action'=>'logout']) ?>
 <?php endif; ?>
 </li>
@@ -103,7 +103,7 @@ if ($current_user && $current_user['role'] === 'Usuario') {
 
 </ul>
 
-<?php if ($current_user && $current_user['role'] === 'Administrador'): ?>
+<?php if (isset($current_user) && $current_user['role'] === 'Administrador'): ?>
 <ul class="right">
 <li class="has-dropdown">
     <a href="#">Admin</a>
