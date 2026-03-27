@@ -28,6 +28,22 @@ class DiscosController extends AppController
         $this->set(compact('discos'));
     }
 
+     public function discosdestacados()
+    {
+        $query = $this->Discos->find()->where(['destacado' => 1])->orderBy(['banda' => 'ASC']);
+        $discos = $this->paginate($query);
+
+        $this->set(compact('discos'));
+    }
+
+    public function discosrecientes()
+    {
+        $query = $this->Discos->find()->where(['reciente' => 1])->orderBy(['banda' => 'ASC']);
+        $discos = $this->paginate($query);
+
+        $this->set(compact('discos'));
+    }
+
     public function discosrest()
     {
         $discos = $this->Discos->find('all')->orderBy(['banda' => 'ASC']);

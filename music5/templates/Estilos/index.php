@@ -1,53 +1,50 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Estilo> $estilos
- */
+<?php 
+if(isset($current_user) && $current_user['role']=='Administrador'){
+    $this->layout = 'admin';
+}else{
+    $this->layout = 'default';
+}
 ?>
-<div class="estilos index content">
-    <?= $this->Html->link(__('New Estilo'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Estilos') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('imagen') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($estilos as $estilo): ?>
-                <tr>
-                    <td><?= $this->Number->format($estilo->id) ?></td>
-                    <td><?= h($estilo->name) ?></td>
-                    <td><?= h($estilo->imagen) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $estilo->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $estilo->id]) ?>
-                        <?= $this->Form->postLink(
-                            __('Delete'),
-                            ['action' => 'delete', $estilo->id],
-                            [
-                                'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $estilo->id),
-                            ]
-                        ) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+<div class="large-12 columns">
+    <div class="large-6 columns">
+        <h3>Estilos</h3>    
+    </div>
+    <div class="large-6 columns">
+        <?php
+            if(isset($current_user) && $current_user['role']=='Administrador'){
+                echo $this->Html->link('Agregar estilo', ['action'=>'add'], ['class' => 'button']);
+            }
+        ?>
+    </div>
+    <div class="large-12 columns">
+    <?php foreach ($estilos as $estilo): ?>
+        <div class="large-3 columns">
+        <div class="panel marcoestilo">
+            
+            <?= $this->Html->link(__('Artistas'), ['action' => 'view', $estilo->id], ['class'=>'button tiny warning']) ?>
+            <p><?= h($estilo->name) ?></p>
+            <?= $this->Html->image('64X64/' . h($estilo->imagen)); ?>
+            <?php 
+                if(isset($current_user) && $current_user['role']=='Administrador'){
+            ?>
+            <p>
+                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $estilo->id], ['class'=>'button tiny info']) ?>
+            
+                <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $estilo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estilo->id), 'class'=>'button tiny alert']) ?>
+            </p>
+            <?php 
+                }
+            ?>
+        </div>
+        </div>
+    <?php endforeach; ?>
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
             <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
