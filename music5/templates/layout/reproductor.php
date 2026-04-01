@@ -24,41 +24,39 @@ $cakeDescription = 'La música de Herman';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/4.0.5/css/foundation.min.css">
-     <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->meta('electric27.ico', '/electric27.ico',['type' => 'icon']); ?>
+    <?= $this->Html->css('foundation.css') ?>
+    <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('jquery-ui.min.css') ?>
-    <?= $this->Html->css('//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css') ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/4.0.5/js/foundation.min.js"></script>
     <?= $this->Html->script(array('jquery.js', 'foundation.min.js', 'jquery-ui.min.js', 'search.js')) ?>
-    <?= $this->Html->script('//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js')?>
+    <?= $this->fetch('script') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+
 </head>
 <body>
-<?php echo $this->element('menu'); ?>
-<br><br><BR></BR>   
-    <?= $this->Flash->render() ?>
+<br><br>
+<div class="row">
+    <div class="large-12 columns">
+        <?= $this->Flash->render() ?>
+    </div>
+</div>
+<br>
+<div id="msg"></div>
+<br>
 <div class="row">
     <div class="large-12 columns">
         <?= $this->fetch('content') ?>
     </div>
-</div>
-<footer>
-</footer>
-   
-<script>
-var basePath = "<?php echo \Cake\Routing\Router::url('/'); ?>";
-      $(document).foundation();
-$(document).ready(function(){
-        $('.alert-box').delay(6000).fadeOut('slow');
-        $('#myTable').DataTable({
-            "order": [[ 1, "asc" ]]
-        });
-    }); 
 
+</div>
+
+<script>
+    $(document).foundation();
+    var basePath = "<?php echo \Cake\Routing\Router::url('/'); ?>";
+    $(document).ready(function(){
+        $('.alert-box').delay(6000).fadeOut('slow');
+    });
 </script>
 </body>
 </html>

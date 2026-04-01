@@ -25,7 +25,7 @@ if(isset($current_user) && $current_user['role']=='Administrador'){
                     <div class="panel marcodisco">
                         <?php
                         if(!empty(h($disco->portada))){
-                            echo $this->Html->image('../files/discos/portada/' . h($disco['portada']), ['class'=>'portada'], ["alt" => $disco['name']]);
+                            echo $this->Html->image('../files/Discos/portada/' . h($disco['portada']), ['class'=>'portada'], ["alt" => $disco['name']]);
                         }else{
                             h($disco->portada);
                         }

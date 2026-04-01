@@ -23,7 +23,7 @@ if(isset($current_user) && $current_user['role']=='Administrador'){
             
             <?= $this->Html->link(__('Artistas'), ['action' => 'view', $estilo->id], ['class'=>'button tiny warning']) ?>
             <p><?= h($estilo->name) ?></p>
-            <?= $this->Html->image('64X64/' . h($estilo->imagen)); ?>
+            <?= $this->Html->image('64x64/' . h($estilo->imagen)); ?>
             <?php 
                 if(isset($current_user) && $current_user['role']=='Administrador'){
             ?>
