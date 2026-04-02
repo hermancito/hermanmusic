@@ -1,0 +1,55 @@
+2026-03-24 11:52:50 error: [Cake\Core\Exception\CakeException] Plugin named `Authentication` is already loaded in /workspaces/hermanmusic/music5/vendor/cakephp/cakephp/src/Core/PluginCollection.php on line 177
+Stack Trace:
+- CORE/src/Http/BaseApplication.php:146
+- APP/Application.php:61
+- CORE/src/Console/CommandRunner.php:215
+- CORE/src/Console/CommandRunner.php:139
+- ROOT/bin/cake.php:10
+- [main]:
+
+2026-03-24 11:53:14 error: [Cake\Core\Exception\CakeException] Plugin named `Authentication` is already loaded in /workspaces/hermanmusic/music5/vendor/cakephp/cakephp/src/Core/PluginCollection.php on line 177
+Stack Trace:
+- CORE/src/Http/BaseApplication.php:146
+- APP/Application.php:61
+- CORE/src/Console/CommandRunner.php:215
+- CORE/src/Console/CommandRunner.php:139
+- ROOT/bin/cake.php:10
+- [main]:
+
+2026-03-24 12:00:59 error: [Cake\Core\Exception\CakeException] Plugin named `Authentication` is already loaded in /workspaces/hermanmusic/music5/vendor/cakephp/cakephp/src/Core/PluginCollection.php on line 177
+Stack Trace:
+- CORE/src/Http/BaseApplication.php:146
+- APP/Application.php:61
+- CORE/src/Console/CommandRunner.php:215
+- CORE/src/Console/CommandRunner.php:139
+- ROOT/bin/cake.php:10
+- [main]:
+
+2026-04-02 06:27:39 error: [Cake\Core\Exception\MissingPluginException] Plugin `DebugKit` could not be found. in /workspaces/hermanmusic/music5/vendor/cakephp/cakephp/src/Core/PluginCollection.php on line 162
+Exception Attributes: array (
+  'plugin' => 'DebugKit',
+)
+Stack Trace:
+- CORE/src/Core/PluginCollection.php:295
+- CORE/src/Core/PluginCollection.php:118
+- CORE/src/Http/BaseApplication.php:191
+- APP/Application.php:32
+- CORE/src/Console/CommandRunner.php:215
+- CORE/src/Console/CommandRunner.php:139
+- ROOT/bin/cake.php:10
+- [main]:
+
+2026-04-02 06:27:58 error: [Cake\Core\Exception\MissingPluginException] Plugin `DebugKit` could not be found. in /workspaces/hermanmusic/music5/vendor/cakephp/cakephp/src/Core/PluginCollection.php on line 162
+Exception Attributes: array (
+  'plugin' => 'DebugKit',
+)
+Stack Trace:
+- CORE/src/Core/PluginCollection.php:295
+- CORE/src/Core/PluginCollection.php:118
+- CORE/src/Http/BaseApplication.php:191
+- APP/Application.php:32
+- CORE/src/Console/CommandRunner.php:215
+- CORE/src/Console/CommandRunner.php:139
+- ROOT/bin/cake.php:10
+- [main]:
+
