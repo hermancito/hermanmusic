@@ -14,7 +14,7 @@ echo $this->Html->script(array('addtocart.js'), array('inline'=>false));
 		    			<div class="thumbnail">
 						<?
 		                if(!empty(h($enventa->portada))){
-		                    echo $this->Html->image('../files/Discos/portada/' . h($enventa['portada']), ['class'=>'portada'], ["alt" => $enventa['name']]);
+		                    echo $this->Html->image('../files/Discos/portada/' . h($enventa->portada), ['class'=>'portada'], ["alt" => $enventa->name]);
 		                }else{
 		                    h($enventa->portada);
 		                }
