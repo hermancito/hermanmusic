@@ -109,6 +109,10 @@ class ComposerStaticInitadc096db2932337f10e09e0f244a0e43
             'Josegonzalez\\Upload\\' => 20,
             'Jasny\\Twig\\' => 11,
         ),
+        'F' =>
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'D' =>
         array (
             'Doctrine\\SqlFormatter\\' => 22,
@@ -332,6 +336,10 @@ class ComposerStaticInitadc096db2932337f10e09e0f244a0e43
         'Jasny\\Twig\\' =>
         array (
             0 => __DIR__ . '/..' . '/jasny/twig-extensions/src',
+        ),
+        'Firebase\\JWT\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Doctrine\\SqlFormatter\\' =>
         array (

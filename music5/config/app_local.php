@@ -94,4 +94,6 @@ return [
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
+
+    'JWT_SECRET' => '9494fuzz!!!',
 ];

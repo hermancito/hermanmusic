@@ -52,6 +52,7 @@ return array(
     'Josegonzalez\\Upload\\Test\\Fixture\\' => array($vendorDir . '/josegonzalez/cakephp-upload/tests/Fixture'),
     'Josegonzalez\\Upload\\' => array($vendorDir . '/josegonzalez/cakephp-upload/src'),
     'Jasny\\Twig\\' => array($vendorDir . '/jasny/twig-extensions/src'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Doctrine\\SqlFormatter\\' => array($vendorDir . '/doctrine/sql-formatter/src'),
     'Detection\\' => array($vendorDir . '/mobiledetect/mobiledetectlib/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),

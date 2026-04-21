@@ -16,6 +16,7 @@ class UsersController extends AppController
 
         $this->Authentication->allowUnauthenticated([
             'login',
+            'loginrest',
             'add'
         ]);
     }    
@@ -43,6 +44,42 @@ class UsersController extends AppController
         }
         if ($this->request->is('post')) {
             $this->Flash->error('Invalid username or password');
+        }
+    }
+
+    public function loginrest()
+    {
+        $this->request->allowMethod(['post']);
+    
+        $result = $this->Authentication->getResult();
+        
+        if ($result->isValid()) {
+    
+            $userData = $result->getData();
+    
+            if ($userData->confirmado) {
+    
+                $message = 'Bienvenido ' . $userData->username;
+    
+                // cargar usuario completo si quieres
+                $user = $this->Users->get($userData->id);
+                $this->set('user', $user);
+                $this->viewBuilder()->setOption('serialize', ['user']);
+                
+            } else {
+    
+                $message = 'Tu cuenta de usuario está pendiente de confirmación';
+                $this->set('message', $message);
+                $this->viewBuilder()->setOption('serialize', ['message']);
+                
+            }
+    
+        } else {
+    
+            $message = 'Error';
+    
+            $this->set('message', $message);
+            $this->viewBuilder()->setOption('serialize', ['message']);
         }
     }
 

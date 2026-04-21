@@ -3,7 +3,7 @@
         'name' => 'cakephp/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ab54d5a87fe6645cd23bb7ebc5c611be1c5d4287',
+        'reference' => '368c8d414aca0c66bbb89be0d39484cb58eb5f3b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'cakephp/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ab54d5a87fe6645cd23bb7ebc5c611be1c5d4287',
+            'reference' => '368c8d414aca0c66bbb89be0d39484cb58eb5f3b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -282,6 +282,15 @@
             'install_path' => __DIR__ . '/../doctrine/sql-formatter',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'v7.0.5',
+            'version' => '7.0.5.0',
+            'reference' => '47ad26bab5e7c70ae8a6f08ed25ff83631121380',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'jasny/twig-extensions' => array(
             'pretty_version' => 'v1.3.1',

@@ -22,32 +22,7 @@
                    ?> 
                 </div>
             </div>
-            <div class="panel">
-                <h2 style="color:olive">El video del mes</h2>
-                <iframe width="100%" height="270" src="http://www.youtube.com/embed/xuKd65C6jvU" frameborder="0" allowfullscreen></iframe>
-                    <p>Los Dictators son unos macarras neoyorquinos coetáneos de Los Ramones injustamente desconocidos</p>
-                    <p>La pinta del cantante es espectacular</p>    
-            </div>
             
-            <!-- <h2>Otros videos destacados</h2>
-                <div class="large-4 columns">
-                    <iframe width="100%" height="270" src="http://www.youtube.com/embed/YAO0Xdp_IWs" frameborder="0" allowfullscreen></iframe>
-                <p>El video de la semana corresponde a: <a href="#">The Cramps</a>.</p>
-                <p>Lux Interior y Poison Ivy en plena forma</p>
-                    <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-                </div>
-                <div class="large-4 columns">
-                    <iframe width="100%" height="270" src="http://www.youtube.com/embed/EYJOq6VnV2U" frameborder="0" allowfullscreen></iframe>
-                    <p>Esta es la época de oro de Siouxie and the Banshees. Grabaron el directo "Nocturne" con temas emblemáticos como este "Israel"</p>
-                    <p>A la guitarra vemos a un jovencito Robert Smith que ya había formado a "The Cure"</p>
-                    <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-                </div>
-                <div class="large-4 columns">
-                    <iframe width="100%" height="80" src="http://www.youtube.com/embed/GYuwLyD2qJ4" frameborder="0" allowfullscreen></iframe>
-                    <p>Radio Futura tocaron techo con el disco "Escuela de calor"</p>
-                    <p>Santiago Auseron y compañia en pura estética 80's</p>
-                    <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
-                </div> -->
         </div>
         
     
