@@ -14,32 +14,33 @@
             <?php
              $total = 0;
             ?>
-            <?php for($i=0; $i<count($carritos); $i++): ?>
-            <tr id="row-<?php echo $carritos[$i]->id; ?>">
+            <?php foreach ($carritos as $carrito): ?>
+            <tr id="row-<?php echo $carrito->id; ?>">
                 <td>
                     <?php
-                    if(!empty(h($carritos[$i]->portada))){
-                        echo $this->Html->image('../files/discos/portada/' . h($carritos[$i]->portada_dir) . '/portrait_' . h($carritos[$i]->portada), ['alt' => 'portada disco', 'class'=>'portada']);
+                    if(!empty(h($carrito->portada))){
+                        echo $this->Html->image('../files/Discos/portada/' . h($carrito->portada), ['alt' => 'portada disco', 'class'=>'portada']);
                         //echo $this->Html->image(h($enventa->portada), array('alt' => 'portada disco'));
                     }else{
-                        h($carritos[$i]->portada);
+                        h($carrito->portada);
                     }
                  ?>
                 </td>
                 <td>
-                    <?php echo $carritos[$i]->name; ?>
+                    <?php echo $carrito->name; ?>
                 </td>
                 <td>
-                    <?php echo $carritos[$i]->precio.' €'; ?>
+                    <?php echo $carrito->precio.' €'; ?>
                 </td>
                 <td>
-                    <?= $this->Html->link('Borrar', ['action'=>'borraitem', $carritos[$i]->id], ['class' => 'button tiny alert']) ?>
+                    <?= $this->Html->link('Borrar', ['action'=>'borraitem', $carrito->id], ['class' => 'button tiny alert']) ?>
                 </td>
             </tr>
-            
+                       
             <?php
-            $total+=$carritos[$i]->precio;
-            endfor; ?>
+                $total+=$carrito->precio; 
+                endforeach; 
+            ?>
         </tbody>
     </table>
     <div class="row">

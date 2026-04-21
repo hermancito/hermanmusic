@@ -26,11 +26,13 @@ $cakeDescription = 'La música de Herman';
     </title>
     <?= $this->Html->meta('electric27.ico', '/electric27.ico',['type' => 'icon']); ?>
     
+    
+    <?= $this->Html->script(array('jquery.js', 'jquery-ui.min.js')) ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/4.0.5/css/foundation.min.css">
     <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('jquery-ui.min.css') ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/4.0.5/js/foundation.min.js"></script>
-    <?= $this->Html->script(array('jquery.js', 'jquery-ui.min.js', 'search.js')) ?>
+    <?= $this->Html->script('search.js') ?>
     <?= $this->fetch('script') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

@@ -90,6 +90,7 @@ if (isset($current_user) && $current_user['role'] === 'Usuario') {
     'type'=>'search',
     'label'=>false,
     'class'=>'s',
+    'id'=>'s',
     'placeholder'=>'Buscar artista o grupo'
 ]) ?>
 </div>

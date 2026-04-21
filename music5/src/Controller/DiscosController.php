@@ -501,7 +501,7 @@ class DiscosController extends AppController
             ->find()
             ->select(['id', 'name', 'banda', 'formato', 'portada', 'portada_dir', 'precio'])
             ->where(['vta' => true])
-            ->order(['name' => 'ASC']);
+            ->orderBy(['name' => 'ASC']);
 
         $this->paginate = [
             'maxLimit' => 6

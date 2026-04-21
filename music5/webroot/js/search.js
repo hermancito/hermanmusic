@@ -18,7 +18,7 @@ $(document).ready(function(){
 							value: el.banda,
 							nombre: el.name,
 							portada: el.portada,
-							portada_dir: el.portada_dir
+							//portada_dir: el.portada_dir
 						}
 					}));
 				}
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	}).data("ui-autocomplete")._renderItem = function(ul, item){
 		return $("<li></li>")
 		.data("item.autocomplete", item)
-		.append("<a><img width='40' src='"+basePath+"files/discos/portada/"+item.portada_dir+"/"+item.portada+"'/>"+item.value+": "+item.nombre+"</a>")
+		.append("<a><img width='40' src='"+basePath+"files/Discos/portada/"+item.portada+"'/>"+item.value+": "+item.nombre+"</a>")
 		.appendTo(ul)
 	}
 });
