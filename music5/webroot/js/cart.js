@@ -47,7 +47,7 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(data){
 
-				$('#msg').html('<div class="alert-box success radius flash-msg">Disco eliminado del carrito</div>');
+				$('#msg').html('<div class="alert-box alert">Disco eliminado del carrito</div>');
 				$('.flash-msg').delay(2000).fadeOut('slow');
 
 				$("#total").html(data.mostrar_pedido.total).animate({backgroundColor: "#ff8"}, 100).animate({backgroundColor: "#fff"}, 500);

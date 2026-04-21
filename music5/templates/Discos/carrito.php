@@ -19,7 +19,7 @@
                 <td>
                     <?php
                     if(!empty(h($carrito->portada))){
-                        echo $this->Html->image('../files/Discos/portada/' . h($carrito->portada), ['alt' => 'portada disco', 'class'=>'portada']);
+                        echo $this->Html->image('../files/Discos/portada/' . h($carrito->portada), ['style' => 'width:100px; height:100px'], ['alt' => 'portada disco', 'class'=>'portada']);
                         //echo $this->Html->image(h($enventa->portada), array('alt' => 'portada disco'));
                     }else{
                         h($carrito->portada);

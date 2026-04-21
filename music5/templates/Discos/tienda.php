@@ -9,7 +9,7 @@
 				<div class="media-object">
 		 			<div class="media-object-section">
 		    			<div class="thumbnail">
-						<?
+						<?php
 		                if(!empty(h($enventa->portada))){
 		                    echo $this->Html->image('../files/Discos/portada/' . h($enventa->portada), ['class'=>'portada'], ["alt" => $enventa->name]);
 		                }else{
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			},
 			dataType: "html",
 			success: function(data){
-				$('#msg').html('<div class="alert-box success radius flash-msg">Disco agregado al carrito</div>');
+				$('#msg').html('<div class="alert-box success">Disco agregado al carrito</div>');
 				$('.flash-msg').delay(2000).fadeOut('slow');
 			},
 			error: function(){
