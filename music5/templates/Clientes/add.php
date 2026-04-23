@@ -33,7 +33,7 @@
                     echo $this->Form->control('discos._ids', ['options' => $discos]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'), ['class'=>'button']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

@@ -53,7 +53,7 @@ $(document).ready(function(){
 			dataType: "html",
 			success: function(data){
 				$('#msg').html('<div class="alert-box success">Disco agregado al carrito</div>');
-				$('.flash-msg').delay(2000).fadeOut('slow');
+				$('.alert-box').delay(2000).fadeOut('slow');
 			},
 			error: function(){
 			 	alert('Tenemos problemas!!');

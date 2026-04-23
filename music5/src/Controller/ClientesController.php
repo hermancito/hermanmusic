@@ -60,6 +60,32 @@ class ClientesController extends AppController
         $this->set(compact('cliente', 'provincias', 'cdvarios', 'discos'));
     }
 
+    public function adcliente()
+    {
+        $cliente = $this->Clientes->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $cliente = $this->Clientes->patchEntity($cliente, $this->request->getData());
+            if ($this->Clientes->save($cliente)) {
+                
+                //obtenemos el ultimo id de cliente grabado y escribimos vble de sesión
+                $lastId= $this->Clientes->find('all')->all();
+                $lastRow=$lastId->last();
+                $idCliente=$lastRow->id;
+                $session = $this->request->getSession();
+                $session->write('idCliente', $idCliente);
+
+                $this->Flash->success(__('Sus datos de cliente han sido grabados.'));
+                return $this->redirect(['controller'=>'ClientesDiscos', 'action' => 'grabaCarrito']);
+            } else {
+                $this->Flash->error(__('The cliente could not be saved. Please, try again.'));
+            }
+        }
+        
+        $provincias = $this->Clientes->Provincias->find('list', ['limit' => 200]);
+        $this->set(compact('cliente', 'provincias'));
+        $this->set('_serialize', ['cliente']);
+    }
+
     /**
      * Edit method
      *
