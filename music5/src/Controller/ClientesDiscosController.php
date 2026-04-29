@@ -59,13 +59,14 @@ class ClientesDiscosController extends AppController
         $this->set(compact('clientesDisco', 'clientes', 'discos'));
     }
 
-    public function grabaCarrito()
+    public function grabaCarrito($idCliente=null)
     {
         $session = $this->request->getSession();
-
         $discosCarrito = $session->read('discos') ?? [];
-        $idCliente = $session->read('idCliente');
-
+        if($idCliente == null){
+            $idCliente = $session->read('idCliente');
+        }
+        //$idCliente = $session->read('idCliente');
         // Validación robusta
         if (empty($idCliente) || empty($discosCarrito)) {
             $this->Flash->error(__('Se ha superado el tiempo para realizar la compra o el carrito está vacío.'));

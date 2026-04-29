@@ -26,7 +26,7 @@ echo $this->Html->script(array('addpago.js'), array('inline'=>false));
                 <td>
                     <?php
                         if(!empty(h($clientesDisco->disco->portada))){
-                        echo $this->Html->image('../files/Discos/portada/' . h($clientesDisco->disco->portada), ['alt' => 'portada disco', 'class'=>'portada']);
+                        echo $this->Html->image('../files/Discos/portada/' . h($clientesDisco->disco->portada), ['style' => 'width:100px; height:100px'], ['alt' => 'portada disco', 'class'=>'portada']);
                         //echo $this->Html->image(h($enventa->portada), array('alt' => 'portada disco'));
                     }else{
                         h($clientesDisco->disco->portada);

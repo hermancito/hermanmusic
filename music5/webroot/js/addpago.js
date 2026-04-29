@@ -9,7 +9,7 @@ $(document).ready(function(){
 			},
 			dataType: "html",
 			success: function(data){
-				$('#msg').html('<div class="alert-box success radius flash-msg">Finalizando compra</div>');
+				$('#msg').html('<div class="alert-box success">Finalizando compra</div>');
 				$('.flash-msg').delay(2000).fadeOut('slow');
 				window.location.replace(basePath+"clientes-discos/muestracompra");
 			},

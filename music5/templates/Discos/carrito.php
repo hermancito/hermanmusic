@@ -55,9 +55,12 @@
             </span>
 
             <br><br>
-            
-            <?php echo $this->Html->link('Procesar Pedido', ['controller' => 'clientes', 'action' => 'adcliente'], ['class' => 'button success']); ?>
-
+            <?php
+                if(isset($current_user)): 
+                    echo $this->Html->link('Procesar Pedido', ['controller' => 'ClientesDiscos', 'action' => 'grabaCarrito', $current_user->id], ['class' => 'button success']); 
+                else:
+                    echo $this->Html->link('Procesar Pedido', ['controller' => 'clientes', 'action' => 'adcliente'], ['class' => 'button success']);
+            endif; ?>
             <?php echo $this->Form->end(); ?>
             <br><br>
             <?php echo $this->Html->link('Borrar todo', array('controller' => 'discos', 'action' => 'quitar'), array('class' => 'button alert', 'confirm' => 'Está seguro de quitar todos los discos del carrito?')); ?>
